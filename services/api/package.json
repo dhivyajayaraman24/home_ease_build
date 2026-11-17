@@ -1,0 +1,21 @@
+{
+  "name": "@pulse-fit/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Node.js TypeScript modular monolith API scaffold.",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-package.mjs",
+    "lint": "node ../../scripts/lint-package.mjs",
+    "test": "node ../../scripts/test-package.mjs",
+    "typecheck": "node ../../scripts/typecheck-package.mjs",
+    "start": "node src/server.mjs"
+  },
+  "pulseFit": {
+    "entrypoint": "src/index.ts",
+    "healthRouteFile": "src/server.mjs",
+    "requiredMarkers": [
+      "createApiApp"
+    ]
+  }
+}

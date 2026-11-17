@@ -1,0 +1,19 @@
+{
+  "name": "@pulse-fit/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared API client scaffold for versioned REST APIs.",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build-package.mjs",
+    "lint": "node ../../scripts/lint-package.mjs",
+    "test": "node ../../scripts/test-package.mjs",
+    "typecheck": "node ../../scripts/typecheck-package.mjs"
+  },
+  "pulseFit": {
+    "entrypoint": "src/index.ts",
+    "requiredMarkers": [
+      "createApiClient"
+    ]
+  }
+}
