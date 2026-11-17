@@ -1,14 +1,40 @@
-export type PlatformRole = "owner-admin" | "branch-manager" | "front-desk" | "trainer" | "member";
+export {
+  PLATFORM_ROLES,
+  ROLE_DEFINITIONS,
+  type PlatformRole,
+  hasOwnerAdminRole,
+  hasRole,
+  isBranchScopedRole,
+  isPlatformRole,
+  normalizeRoles
+} from "./roles";
 
-export interface AccessDecision {
-  allowed: boolean;
-  reason: string;
-}
+export {
+  type AccessDecision,
+  type AuthorizationGuard,
+  type AuthorizationPolicy,
+  assertGuard,
+  authorize,
+  canAccessBranch,
+  canUseRole,
+  requireAnyRole,
+  requireAuthorization,
+  requireBranchScope,
+  requireRoleForBranch
+} from "./authorization";
 
-export function canAccessBranch(userBranchIds: string[], requestedBranchId: string): AccessDecision {
-  const allowed = userBranchIds.includes(requestedBranchId);
-  return {
-    allowed,
-    reason: allowed ? "branch_scope_matched" : "branch_scope_denied"
-  };
-}
+export {
+  type AuthenticatedPrincipal,
+  type AuthenticationContext,
+  type AuthenticationDependencies,
+  type JwtClaims,
+  type JwtVerifier,
+  type OidcJwtVerifierConfig,
+  type UserAccessRecord,
+  type UserAccessRepository,
+  authenticateBearerToken,
+  authenticateRequest,
+  createDatabaseUserAccessRepository,
+  createOidcJwtVerifier,
+  getBearerToken
+} from "./authMiddleware";
