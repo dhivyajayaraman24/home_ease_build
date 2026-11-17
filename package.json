@@ -1,0 +1,29 @@
+{
+  "name": "pulse-fit-14",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pulse Fit gym management platform monorepo.",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "services/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "start:member-mobile": "npm run start --workspace @pulse-fit/member-mobile",
+    "start:staff-web": "npm run start --workspace @pulse-fit/staff-web",
+    "start:management-web": "npm run start --workspace @pulse-fit/management-web",
+    "start:api": "npm run start --workspace @pulse-fit/api",
+    "build:member-mobile": "npm run build --workspace @pulse-fit/member-mobile",
+    "build:staff-web": "npm run build --workspace @pulse-fit/staff-web",
+    "build:management-web": "npm run build --workspace @pulse-fit/management-web",
+    "build:api": "npm run build --workspace @pulse-fit/api"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
