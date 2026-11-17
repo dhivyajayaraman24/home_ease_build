@@ -6,10 +6,15 @@
   "type": "module",
   "scripts": {
     "build": "node ../../scripts/build-package.mjs",
+    "db:migrate": "node db/cli.mjs migrate",
+    "db:seed": "node db/cli.mjs seed",
     "lint": "node ../../scripts/lint-package.mjs",
     "test": "node ../../scripts/test-package.mjs",
     "typecheck": "node ../../scripts/typecheck-package.mjs",
     "start": "node src/server.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
   },
   "pulseFit": {
     "entrypoint": "src/index.ts",
