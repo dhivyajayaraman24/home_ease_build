@@ -11,7 +11,11 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "ci": "npm run lint && npm run typecheck && npm test && npm run db:migrations:validate && npm run build",
+    "db:migrations:validate": "node -e \"const fs=require('fs');const p='services/api/db/migrations';const f=fs.readdirSync(p).filter(n=>n.endsWith('.sql')).sort();if(!f.length)throw new Error('No SQL migrations found');const v=new Set();for(const n of f){const m=n.match(/^(\\d+)_[-a-z0-9_]+\\.sql$/);if(!m)throw new Error('Invalid migration name '+n);if(v.has(m[1]))throw new Error('Duplicate migration version '+m[1]);v.add(m[1]);const s=fs.readFileSync(p+'/'+n,'utf8');if(!s.trim())throw new Error('Empty migration '+n);if(!s.includes('schema_migrations'))throw new Error('Migration '+n+' must maintain schema_migrations');}console.log('validated '+f.length+' migrations');\"",
     "lint": "npm run lint --workspaces --if-present",
+    "security:cve": "npm audit --omit=dev --audit-level=high",
+    "security:sbom": "npm sbom --sbom-format=cyclonedx > sbom.cdx.json",
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "start:member-mobile": "npm run start --workspace @pulse-fit/member-mobile",
